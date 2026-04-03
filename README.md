@@ -32,7 +32,7 @@ code-server requires a secure context (HTTPS) for webviews, clipboard, and exten
 Run this command from the **Proxmox shell** (not inside a container):
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/linovaccarezza/code-server/refs/heads/main/code-server.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/linovaccarezza/code-server/main/code-server.sh)"
 ```
 
 The script will:
@@ -84,7 +84,7 @@ SSH FS lets you mount remote folders over SSH and edit them directly in the brow
 To update Debian packages, code-server, and the SSH FS extension, re-run the installation script on the existing container from the Proxmox shell:
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/linovaccarezza/code-server/refs/heads/main/code-server.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/linovaccarezza/code-server/main/code-server.sh)"
 ```
 
 The script detects the existing installation and runs the update routine instead of creating a new container.
