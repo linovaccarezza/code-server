@@ -1,5 +1,6 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/coder/code-server/main/docs/assets/screenshot.png" alt="code-server screenshot" width="600"/>
+  <img src="https://raw.githubusercontent.com/linovaccarezza/code-server/a5cef55c728c911cb59950628565137a9016178b/docs/assets/screenshot.png" alt="code-server screenshot" width="600"/>
+  <img src="" alt="code-server screenshot" width="600"/>
   <h1>code-server LXC</h1>
   <p>
     <b>VS Code in the browser</b> — self-hosted on Proxmox LXC, ready in one command.
