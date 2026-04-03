@@ -36,6 +36,7 @@ function update_script() {
 
 start
 build_container
+pct set "${CTID}" --features "fuse=1,nesting=1,keyctl=1"
 description
 
 msg_info "Running code-server installation inside LXC ${CTID}"
