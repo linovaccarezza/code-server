@@ -9,12 +9,12 @@ set -euo pipefail
 # ============================================================
 
 echo "[INFO] Updating system packages..."
-apt-get update -qq
-apt-get upgrade -y -qq
+apt-get update -qq > /dev/null 2>&1
+apt-get upgrade -y -qq > /dev/null 2>&1
 echo "[OK] System updated"
 
 echo "[INFO] Installing code-server..."
-curl -fsSL https://code-server.dev/install.sh | sh
+curl -fsSL https://code-server.dev/install.sh | sh > /dev/null 2>&1
 echo "[OK] code-server installed"
 
 echo "[INFO] Enabling code-server service..."
@@ -42,7 +42,7 @@ systemctl restart code-server@root
 echo "[OK] code-server configured"
 
 echo "[INFO] Installing SSH FS extension..."
-code-server --install-extension Kelvin.vscode-sshfs
+code-server --install-extension Kelvin.vscode-sshfs > /dev/null 2>&1
 echo "[OK] SSH FS extension installed"
 
 echo ""

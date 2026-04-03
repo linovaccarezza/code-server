@@ -27,10 +27,22 @@ function update_script() {
     msg_error "No ${APP} Installation Found!"
     exit
   fi
-  msg_info "Updating $APP"
+
+  msg_info "Updating Debian packages"
+  $STD apt-get update
+  $STD apt-get upgrade -y
+  msg_ok "Updated Debian packages"
+
+  msg_info "Updating code-server"
   $STD curl -fsSL https://code-server.dev/install.sh | sh
   $STD systemctl restart code-server@root
-  msg_ok "Updated $APP"
+  msg_ok "Updated code-server"
+
+  msg_info "Updating SSH FS extension"
+  $STD code-server --install-extension Kelvin.vscode-sshfs --force
+  msg_ok "Updated SSH FS extension"
+
+  msg_ok "Updated successfully!"
   exit
 }
 
