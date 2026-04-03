@@ -27,22 +27,9 @@ function update_script() {
     msg_error "No ${APP} Installation Found!"
     exit
   fi
-
-  msg_info "Updating Debian packages"
-  $STD apt-get update
-  $STD apt-get upgrade -y
-  msg_ok "Updated Debian packages"
-
-  msg_info "Updating code-server"
-  $STD curl -fsSL https://code-server.dev/install.sh | sh
-  $STD systemctl restart code-server@root
-  msg_ok "Updated code-server"
-
-  msg_info "Updating SSH FS extension"
-  $STD code-server --install-extension Kelvin.vscode-sshfs --force
-  msg_ok "Updated SSH FS extension"
-
-  msg_ok "Updated successfully!"
+  msg_info "Updating ${APP}"
+  $STD bash /usr/bin/update
+  msg_ok "Updated ${APP}"
   exit
 }
 
@@ -52,7 +39,7 @@ pct set "${CTID}" --features "fuse=1,nesting=1,keyctl=1"
 description
 
 msg_info "Running code-server installation inside LXC ${CTID}"
-lxc-attach -n "${CTID}" -- bash -c "$(curl -fsSL https://raw.githubusercontent.com/linovaccarezza/code-server/refs/heads/main/code-server-install.sh)"
+lxc-attach -n "${CTID}" -- bash -c "$(curl -fsSL https://raw.githubusercontent.com/linovaccarezza/code-server/main/code-server-install.sh)"
 INSTALL_EXIT=$?
 
 if [[ $INSTALL_EXIT -eq 0 ]]; then
@@ -61,6 +48,7 @@ if [[ $INSTALL_EXIT -eq 0 ]]; then
   echo -e "${INFO}${YW} Access it using the following URL:${CL}"
   echo -e "${TAB}${GATEWAY}${BGN}https://${IP}:8080${CL}"
   echo -e "${INFO}${YW} The password is shown above in the installation log.${CL}"
+  echo -e "${INFO}${YW} To update, run ${BGN}update${YW} from inside the container shell.${CL}"
 else
   msg_error "Installation failed! Check the log above for details."
 fi

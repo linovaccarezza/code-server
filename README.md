@@ -1,5 +1,5 @@
 <div align="center">
- <img src="https://raw.githubusercontent.com/linovaccarezza/code-server/main/docs/assets/screenshot.png" alt="code-server screenshot" width="600"/>
+  <img src="https://raw.githubusercontent.com/linovaccarezza/code-server/main/docs/assets/screenshot.png" alt="code-server screenshot" width="600"/>
   <h1>code-server LXC</h1>
   <p>
     <b>VS Code in the browser</b> — self-hosted on Proxmox LXC, ready in one command.
@@ -81,13 +81,13 @@ SSH FS lets you mount remote folders over SSH and edit them directly in the brow
 
 ## Updating
 
-To update Debian packages, code-server, and the SSH FS extension, re-run the installation script on the existing container from the Proxmox shell:
+To update Debian packages, code-server, and the SSH FS extension, access the container shell from the Proxmox web UI or via SSH, then run:
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/linovaccarezza/code-server/main/code-server.sh)"
+update
 ```
 
-The script detects the existing installation and runs the update routine instead of creating a new container.
+This command is installed automatically during setup and handles all three updates in one step.
 
 ## Network note
 
