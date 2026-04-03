@@ -89,6 +89,14 @@ update
 
 This command is installed automatically during setup and handles all three updates in one step.
 
+## Known browser behaviour
+
+On first load, or when code-server reloads after connecting to a remote folder via SSH FS, the page may appear to hang and require a manual refresh. **This is not caused by this script** — it is a known browser behaviour when using self-signed HTTPS certificates: the browser occasionally stalls while processing the security exception.
+
+A manual page refresh (⌘R / Ctrl+R) always resolves it immediately.
+
+If this behaviour is unacceptable in your environment, the recommended solution is to place a reverse proxy (such as [Caddy](https://caddyserver.com/) or [Nginx Proxy Manager](https://nginxproxymanager.com/)) in front of code-server with a valid certificate — either from Let's Encrypt or your own internal CA. This is an infrastructure-level configuration outside the scope of this script.
+
 ## Network note
 
 By default, the LXC is created on **vmbr0**. If your LAN runs on a different bridge (e.g. vmbr1), choose **Advanced** during installation to select the correct bridge, or change it afterwards from the Proxmox web UI.
